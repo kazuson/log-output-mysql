@@ -36,7 +36,7 @@ gender = arrayline[5].to_i
 sojourntime = arrayline[6].to_i
 viewingtime = arrayline[7].to_i
 facesize = arrayline[8].to_f
-distancecategory = arrayline[9]
+distancecategory = arrayline[9].chomp
 
 case sex
 when "1" then
