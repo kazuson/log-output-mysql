@@ -18,6 +18,15 @@ def convert_Array line
   return arrayline
 end
 
+def readupdatetime
+  updatetime = File::stat("D20160710.dat")
+  updatetime2 = File::stat("D20160710.dat")
+  while updatetime == updatetime2
+    updatetime2 = File::stat("D20160710.dat")
+  end
+end
+
+readupdatetime
 
 day = Date::today
 day = day.to_s
@@ -38,14 +47,17 @@ viewingtime = arrayline[7].to_i
 facesize = arrayline[8].to_f
 distancecategory = arrayline[9].chomp
 
+#列挙型のための条件分岐、-1が帰ってきた時はプログラムを抜ける
 case sex
 when "1" then
   sex = "male"
 when "0" then
   sex = "female"
 when "-1" then
-  sex = "nodata"
+  #sex = "nodata"
+  exit!
 end
+
 
 if estimatedstart == "-1"
   estimatedstart = day + "\s" + "00:00:00"
